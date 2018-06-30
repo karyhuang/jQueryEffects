@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery Effects Demo</title>
+  <!-- include jQuery in head or right before scripts in the body -->
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+
+  <style type="text/css">
+    div{
+      width: 100px;
+      height: 100px;
+      background-color: teal;
+      float: left;
+      margin: 20px;
+    }
+    h1, h2{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="btn1">CLICK ME FOR FADE EFFECTS</button><br>
+  <button id="btn2">CLICK ME FOR SLIDE EFFECTS</button><br>
+
+  <div>Please don't fade me!</div>
+  <div>I'm begging you, please!</div>
+  <div>Someone help me!</div>
+
+  <h1>I'm an h1</h1>
+  <h2>jQuery can fadeToggle me</h2>
+
+  <script type="text/javascript">
+    $('#btn1').on('click',function(){
+
+      // .fadeOut()
+      // fade out the divs in 0.8 seconds
+      $('div').fadeOut(800, function(){
+        // to console.log this message after the fadeOut has completed, must put it inside a callback function at the fadeOut event, otherwise the message will be printed before the fadeOut completes
+        console.log('Fade Out Completed');
+        // after fading out, the elements are still on the page, if you inspect, the html is still there
+        // to remove the html from the page, use .remove()
+        $(this).remove();
+      });
+      
+      // .fadeIn()
+      // fade in the h1
+      $('h1').fadeIn(1000, function(){
+        console.log('h1 faded in');
+      });
+
+      // .fadeToggle()
+      $('h2').fadeToggle(1000);
+    });
+
+    $('#btn2').on('click',function(){
+
+      // .slideUp()
+      // slide up the divs in 0.8 seconds
+      $('div').slideUp(800, function(){
+        console.log('Slide up Completed');
+      });
+      
+      // .slideDown()
+      // slide down the h1
+      $('h1').slideDown(1000, function(){
+        console.log('h1 slided down');
+      });
+
+      // .slideToggle()
+      $('h2').text('jQuery can slideToggle me');
+      $('h2').slideToggle(1000);
+    });    
+    
+  </script>
+
+</body>
+</html>
